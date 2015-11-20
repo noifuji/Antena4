@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/grp1">
+        <item
+            android:id="@+id/new_entry"
+            android:checked="false"
+            android:icon="@drawable/ic_list_black_24dp"
+            android:title="@string/new_arrival" />
+    </group>
+
+    <group android:id="@+id/grp2">
+        <item android:title="カテゴリ">
+            <menu>
+                <item
+                    android:id="@+id/news"
+                    android:checked="false"
+                    android:icon="@drawable/ic_label_black_24dp"
+                    android:title="@string/news" />
+
+                <item
+                    android:id="@+id/vip"
+                    android:checked="false"
+                    android:icon="@drawable/ic_label_black_24dp"
+                    android:title="@string/vip" />
+
+                <item
+                    android:id="@+id/money"
+                    android:checked="false"
+                    android:icon="@drawable/ic_label_black_24dp"
+                    android:title="@string/money" />
+
+                <item
+                    android:id="@+id/sports"
+                    android:checked="false"
+                    android:icon="@drawable/ic_label_black_24dp"
+                    android:title="@string/sports" />
+
+                <item
+                    android:id="@+id/kijo"
+                    android:checked="false"
+                    android:icon="@drawable/ic_label_black_24dp"
+                    android:title="@string/kijo" />
+            </menu>
+        </item>
+    </group>
+
+</menu><!-- From: file:/C:/StudioProjects/Antena4/app/src/main/res/menu/drawer.xml -->
