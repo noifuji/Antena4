@@ -12,10 +12,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import jp.noifuji.antena.R;
+import jp.noifuji.antena.constants.Category;
+import jp.noifuji.antena.entity.Headline;
 
 /**
  * Created by Ryoma on 2015/10/30.
@@ -96,5 +100,26 @@ public class Utils {
             }
         }
         return false;
+    }
+
+    public static List<Headline> filterHeadlineListByCategory(List<Headline> headlines, String category) {
+        Log.d(TAG, "category:" + category);
+        if(headlines == null || category == null) {
+            return null;
+        }
+        //全てのカテゴリならば、そのまま返す。
+        if(category.equals(Category.ALL)) {
+            return headlines;
+        }
+
+        ArrayList<Headline> categoryHeadlines = new ArrayList<>();
+
+        for(Headline headline: headlines) {
+            if (category.equals(headline.getmCategory())) {
+                categoryHeadlines.add(headline);
+            }
+        }
+
+        return categoryHeadlines;
     }
 }

@@ -6,11 +6,15 @@ import android.content.Context;
 import android.content.Loader;
 import android.os.Bundle;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.List;
 
 import jp.noifuji.antena.entity.Headline;
 import jp.noifuji.antena.loader.AsyncResult;
 import jp.noifuji.antena.data.repository.HeadlineRepository;
+import jp.noifuji.antena.util.Utils;
 
 /**
  * Created by ryoma on 2015/11/20.
@@ -23,7 +27,7 @@ public class GetHeadlineListUseCase extends AsyncTaskLoader<AsyncResult<List<Hea
     private String mLatestPublicationDate;
     private String mCategory;
     private Context mContext;
-    private GetHeadlineListUseCaseListener mListener;
+    private GetHeadlineListUseCaseListener mUseCaseListener;
 
     public GetHeadlineListUseCase(Context context, HeadlineRepository headlineRepository, String latestPublicationDate, String category) {
         super(context);
@@ -36,7 +40,16 @@ public class GetHeadlineListUseCase extends AsyncTaskLoader<AsyncResult<List<Hea
     @Override
     public AsyncResult<List<Headline>> loadInBackground() {
         AsyncResult<List<Headline>> result = new AsyncResult<List<Headline>>();
-        List<Headline> headlineList = mHeadlineRepository.headlines().headlineList(mLatestPublicationDate, mCategory);
+        List<Headline> headlineList = null;
+        try {
+            headlineList = mHeadlineRepository.headlines().headlineList(mContext, mLatestPublicationDate, mCategory);
+        } catch (IOException e) {
+            e.printStackTrace();
+            result.setException(e, "");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            result.setException(e, "");
+        }
         result.setData(headlineList);
         return result;
     }
@@ -51,12 +64,12 @@ public class GetHeadlineListUseCase extends AsyncTaskLoader<AsyncResult<List<Hea
         Exception exception = data.getException();
         if (data.getException() != null) {
             //Presenterへのエラー通知を行う
-            if(mListener != null) {
-                mListener.onGetHeadlineListUseCaseError(data.getErrorMessage());
+            if(mUseCaseListener != null) {
+                mUseCaseListener.onGetHeadlineListUseCaseError(data.getErrorMessage());
             }
             return;
         }
-        mListener.onGetHeadlineListUseCaseCompleted(data.getData(), 1);
+        mUseCaseListener.onGetHeadlineListUseCaseCompleted(Utils.filterHeadlineListByCategory(data.getData(), mCategory), 1);//@
     }
 
     @Override
@@ -75,7 +88,7 @@ public class GetHeadlineListUseCase extends AsyncTaskLoader<AsyncResult<List<Hea
      * @param listener リスナとして登録するクラスのインスタンス
      */
     public void addListener(GetHeadlineListUseCaseListener listener) {
-        this.mListener = listener;
+        this.mUseCaseListener = listener;
     }
 
     /**

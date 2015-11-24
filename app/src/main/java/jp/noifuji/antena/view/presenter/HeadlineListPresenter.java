@@ -2,14 +2,15 @@ package jp.noifuji.antena.view.presenter;
 
 import android.util.Log;
 
+import java.util.Collections;
 import java.util.List;
 
-import jp.noifuji.antena.entity.Headline;
-import jp.noifuji.antena.view.fragment.HeadLineListFragment;
-import jp.noifuji.antena.model.HeadLineListModel;
-import jp.noifuji.antena.model.ModelFactory;
 import jp.noifuji.antena.data.repository.HeadlineRepositoryImpl;
 import jp.noifuji.antena.domain.usecase.GetHeadlineListUseCase;
+import jp.noifuji.antena.entity.Headline;
+import jp.noifuji.antena.entity.HeadlineComparator;
+import jp.noifuji.antena.model.HeadLineListModel;
+import jp.noifuji.antena.view.fragment.HeadLineListFragment;
 
 /**
  * Created by ryoma on 2015/11/19.
@@ -19,7 +20,7 @@ public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadL
     private static final String TAG = "HeadlineListPresenter";
     private static HeadlineListPresenter instance = new HeadlineListPresenter();
     private HeadLineListFragment mHeadlineListFragment;
-    private HeadLineListModel mHeadLineListModel;
+    //private HeadLineListModel mHeadLineListModel;
     private GetHeadlineListUseCase g;
 
     private HeadlineListPresenter() {}
@@ -30,16 +31,13 @@ public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadL
 
     @Override
     public void resume() {
-        mHeadLineListModel.addListener(this);
-        g = new GetHeadlineListUseCase(this.mHeadlineListFragment.getActivity(), new HeadlineRepositoryImpl(), "", "");
-        g.addListener(this);
-        g.execute(this.mHeadlineListFragment.getLoaderManager());
+//        mHeadLineListModel.addListener(this);
     }
 
     @Override
     public void pause() {
-        mHeadLineListModel.removeListener(this);
-        mHeadLineListModel.saveHeadLineList(mHeadlineListFragment.getActivity());
+ //       mHeadLineListModel.removeListener(this);
+//        mHeadLineListModel.saveHeadLineList(mHeadlineListFragment.getActivity());
     }
 
     @Override
@@ -47,7 +45,7 @@ public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadL
 
     public void initialize(String category) {
         if(mHeadlineListFragment != null) {
-            mHeadLineListModel = ModelFactory.getInstance().getmHeadLineListModel(mHeadlineListFragment.getContext());
+//            mHeadLineListModel = ModelFactory.getInstance().getmHeadLineListModel(mHeadlineListFragment.getActivity().getApplication());
         }
     }
 
@@ -84,7 +82,11 @@ public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadL
 
     private void getHeadlineList(String category) {
         //ヘッドラインのリストを取得する。
-        mHeadLineListModel.pullNewHeadLine(mHeadlineListFragment.getActivity(), mHeadlineListFragment.getLoaderManager(), category);
+        //mHeadLineListModel.pullNewHeadLine(mHeadlineListFragment.getActivity(), mHeadlineListFragment.getLoaderManager(), category);
+
+        g = new GetHeadlineListUseCase(this.mHeadlineListFragment.getActivity(), new HeadlineRepositoryImpl(), "0", mHeadlineListFragment.getCategory());//@
+        g.addListener(this);
+        g.execute(this.mHeadlineListFragment.getLoaderManager());
     }
 
     @Override
@@ -105,11 +107,22 @@ public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadL
 
     @Override
     public void onGetHeadlineListUseCaseError(String errorMessage) {
-
+        this.hideViewLoading();
+        mHeadlineListFragment.showError(errorMessage);
     }
 
     @Override
     public void onGetHeadlineListUseCaseCompleted(List<Headline> headlineList, int updatedCount) {
-        Log.d(TAG, "title is " + headlineList.get(0).getmTitle());
+        if(headlineList == null) {
+            return;
+        }
+        Log.d(TAG, "title is " + Collections.max(headlineList, new HeadlineComparator()).getmTitle());
+
+        this.hideViewLoading();
+        this.hideViewRefreshing();
+        mHeadlineListFragment.renderHeadlineList(headlineList);
+        if(headlineList.size() > 0) {
+            this.mHeadlineListFragment.setNewestHeadline(Collections.max(headlineList, new HeadlineComparator()));
+        }
     }
 }

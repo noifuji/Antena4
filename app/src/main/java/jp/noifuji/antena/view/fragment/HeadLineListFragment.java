@@ -2,7 +2,6 @@ package jp.noifuji.antena.view.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -22,8 +21,8 @@ import butterknife.ButterKnife;
 import jp.noifuji.antena.R;
 import jp.noifuji.antena.constants.Category;
 import jp.noifuji.antena.entity.Headline;
-import jp.noifuji.antena.view.presenter.HeadlineListPresenter;
 import jp.noifuji.antena.view.EntryAdapter;
+import jp.noifuji.antena.view.presenter.HeadlineListPresenter;
 
 
 /**
@@ -185,6 +184,10 @@ public class HeadLineListFragment extends Fragment {
         void onSetNewestEntryTitle(Headline headline);
     }
 
+    public String getCategory() {
+        return mCategory;
+    }
+
     public void showLoading() {
         this.mProgressBar.setVisibility(View.VISIBLE);
     }
@@ -232,10 +235,6 @@ public class HeadLineListFragment extends Fragment {
         Headline headline = (Headline) mListView.getAdapter().getItem(position);
         headline.setIsRead(true);
         mListView.getAdapter().getView(position, null, null);
-    }
-
-    public Context getContext() {
-        return this.getActivity().getApplicationContext();
     }
 
 }
