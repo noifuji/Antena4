@@ -12,8 +12,8 @@ import java.util.List;
 
 import jp.noifuji.antena.data.net.WebAPI;
 import jp.noifuji.antena.data.cache.HeadlineListCache;
-import jp.noifuji.antena.entity.Headline;
-import jp.noifuji.antena.entity.HeadlineComparator;
+import jp.noifuji.antena.data.entity.Headline;
+import jp.noifuji.antena.data.entity.HeadlineComparator;
 import jp.noifuji.antena.util.Utils;
 
 /**
@@ -24,14 +24,15 @@ public class HeadlineDataStore implements DataStore {
     private static final String TAG = "HeadlineDataStore";
 
     @Override
-    public List<Headline> headlineList(Context context, String time, String category) throws IOException, JSONException {
+    public List<Headline> headlineList(Context context, String category) throws IOException, JSONException {
         Log.d(TAG, "headlineList called");
         HeadlineListCache cache = new HeadlineListCache(context);
         ArrayList<Headline> headlinesCache = null;
         WebAPI webAPI = new WebAPI();
 
-        Log.d(TAG, cache.isCached() + "," + cache.isExpired());
+
         if (cache.isCached() && !cache.isExpired()) {
+            //本日分のキャッシュが存在する場合
             headlinesCache = (ArrayList<Headline>) cache.get();
             for(Headline h :headlinesCache) {
                 Log.d(TAG, h.getmTitle());

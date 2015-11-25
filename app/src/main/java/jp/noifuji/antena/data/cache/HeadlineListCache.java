@@ -8,8 +8,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import jp.noifuji.antena.entity.Headline;
-import jp.noifuji.antena.entity.HeadlineComparator;
+import jp.noifuji.antena.data.entity.Headline;
+import jp.noifuji.antena.data.entity.HeadlineComparator;
 import jp.noifuji.antena.util.Utils;
 
 /**
@@ -47,6 +47,10 @@ public class HeadlineListCache {
         return file.exists();
     }
 
+    /**
+     * キャッシュ内のHeadline情報が本日の記事のものかを返す。
+     * @return 記事の発行時刻が本日であればtrueを返す。
+     */
     public boolean isExpired() {//@
         List<Headline> headlines = get();
         Headline newestHeadline = Collections.max(headlines, new HeadlineComparator());

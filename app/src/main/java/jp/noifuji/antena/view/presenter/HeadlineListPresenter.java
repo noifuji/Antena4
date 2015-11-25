@@ -7,8 +7,8 @@ import java.util.List;
 
 import jp.noifuji.antena.data.repository.HeadlineRepositoryImpl;
 import jp.noifuji.antena.domain.usecase.GetHeadlineListUseCase;
-import jp.noifuji.antena.entity.Headline;
-import jp.noifuji.antena.entity.HeadlineComparator;
+import jp.noifuji.antena.data.entity.Headline;
+import jp.noifuji.antena.data.entity.HeadlineComparator;
 import jp.noifuji.antena.model.HeadLineListModel;
 import jp.noifuji.antena.view.fragment.HeadLineListFragment;
 
@@ -19,8 +19,7 @@ public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadL
 
     private static final String TAG = "HeadlineListPresenter";
     private static HeadlineListPresenter instance = new HeadlineListPresenter();
-    private HeadLineListFragment mHeadlineListFragment;
-    //private HeadLineListModel mHeadLineListModel;
+    private HeadLineListFragment mHeadlineListFragment;//@フラグメントが死んだときやばくね??
     private GetHeadlineListUseCase g;
 
     private HeadlineListPresenter() {}
@@ -31,13 +30,10 @@ public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadL
 
     @Override
     public void resume() {
-//        mHeadLineListModel.addListener(this);
     }
 
     @Override
     public void pause() {
- //       mHeadLineListModel.removeListener(this);
-//        mHeadLineListModel.saveHeadLineList(mHeadlineListFragment.getActivity());
     }
 
     @Override
@@ -45,7 +41,6 @@ public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadL
 
     public void initialize(String category) {
         if(mHeadlineListFragment != null) {
-//            mHeadLineListModel = ModelFactory.getInstance().getmHeadLineListModel(mHeadlineListFragment.getActivity().getApplication());
         }
     }
 
@@ -64,7 +59,7 @@ public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadL
 
     public void onHeadlineClicked(Headline headline, int position) {
         //headline.setIsRead(true);
-        //this.mHeadlineListFragment.readHeadline(position);
+        //this.mHeadlineListFragment.readHeadline(position);//既読機能
         this.mHeadlineListFragment.viewEntry(headline);
     }
 
@@ -82,9 +77,7 @@ public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadL
 
     private void getHeadlineList(String category) {
         //ヘッドラインのリストを取得する。
-        //mHeadLineListModel.pullNewHeadLine(mHeadlineListFragment.getActivity(), mHeadlineListFragment.getLoaderManager(), category);
-
-        g = new GetHeadlineListUseCase(this.mHeadlineListFragment.getActivity(), new HeadlineRepositoryImpl(), "0", mHeadlineListFragment.getCategory());//@
+        g = new GetHeadlineListUseCase(this.mHeadlineListFragment.getActivity(), new HeadlineRepositoryImpl(), category);
         g.addListener(this);
         g.execute(this.mHeadlineListFragment.getLoaderManager());
     }

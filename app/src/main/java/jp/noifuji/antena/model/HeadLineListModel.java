@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import jp.noifuji.antena.constants.Category;
-import jp.noifuji.antena.entity.Headline;
+import jp.noifuji.antena.data.entity.Headline;
 import jp.noifuji.antena.loader.AsyncResult;
 import jp.noifuji.antena.loader.RequestNewHeadLineAsyncLoader;
 import jp.noifuji.antena.util.Utils;

@@ -18,7 +18,7 @@ import android.widget.Toast;
 import butterknife.Bind;
 import jp.noifuji.antena.R;
 import jp.noifuji.antena.constants.Category;
-import jp.noifuji.antena.entity.Headline;
+import jp.noifuji.antena.data.entity.Headline;
 import jp.noifuji.antena.view.fragment.HeadLineListFragment;
 
 public class MainActivity extends AppCompatActivity implements HeadLineListFragment.OnFragmentInteractionListener {

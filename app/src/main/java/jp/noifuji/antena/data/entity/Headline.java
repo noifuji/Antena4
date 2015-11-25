@@ -1,4 +1,4 @@
-package jp.noifuji.antena.entity;
+package jp.noifuji.antena.data.entity;
 
 import org.json.JSONException;
 import org.json.JSONObject;

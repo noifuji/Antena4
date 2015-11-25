@@ -20,7 +20,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import jp.noifuji.antena.R;
 import jp.noifuji.antena.constants.Category;
-import jp.noifuji.antena.entity.Headline;
+import jp.noifuji.antena.data.entity.Headline;
 import jp.noifuji.antena.view.EntryAdapter;
 import jp.noifuji.antena.view.presenter.HeadlineListPresenter;
 
@@ -182,10 +182,6 @@ public class HeadLineListFragment extends Fragment {
         void onSetTitle(String category);
 
         void onSetNewestEntryTitle(Headline headline);
-    }
-
-    public String getCategory() {
-        return mCategory;
     }
 
     public void showLoading() {

@@ -11,7 +11,7 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.List;
 
-import jp.noifuji.antena.entity.Headline;
+import jp.noifuji.antena.data.entity.Headline;
 import jp.noifuji.antena.loader.AsyncResult;
 import jp.noifuji.antena.data.repository.HeadlineRepository;
 import jp.noifuji.antena.util.Utils;
@@ -24,15 +24,13 @@ public class GetHeadlineListUseCase extends AsyncTaskLoader<AsyncResult<List<Hea
     private static final String TAG = "GetHeadlineListUseCase";
     private Loader mLoader;
     private HeadlineRepository mHeadlineRepository;
-    private String mLatestPublicationDate;
     private String mCategory;
     private Context mContext;
     private GetHeadlineListUseCaseListener mUseCaseListener;
 
-    public GetHeadlineListUseCase(Context context, HeadlineRepository headlineRepository, String latestPublicationDate, String category) {
+    public GetHeadlineListUseCase(Context context, HeadlineRepository headlineRepository, String category) {
         super(context);
         this.mHeadlineRepository = headlineRepository;
-        mLatestPublicationDate = latestPublicationDate;
         mCategory = category;
         mContext = context;
     }
@@ -42,7 +40,7 @@ public class GetHeadlineListUseCase extends AsyncTaskLoader<AsyncResult<List<Hea
         AsyncResult<List<Headline>> result = new AsyncResult<List<Headline>>();
         List<Headline> headlineList = null;
         try {
-            headlineList = mHeadlineRepository.headlines().headlineList(mContext, mLatestPublicationDate, mCategory);
+            headlineList = mHeadlineRepository.headlines().headlineList(mContext, mCategory);
         } catch (IOException e) {
             e.printStackTrace();
             result.setException(e, "");

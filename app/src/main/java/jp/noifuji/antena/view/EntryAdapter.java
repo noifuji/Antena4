@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import jp.noifuji.antena.R;
-import jp.noifuji.antena.entity.Headline;
+import jp.noifuji.antena.data.entity.Headline;
 
 /**
  * Created by Ryoma on 2015/10/24.
