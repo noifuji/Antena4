@@ -7,4 +7,5 @@ public class ErrorMessage {
     private ErrorMessage () {}
 
     public static final String E001 = "ネットワーク通信に失敗しました。";
+    public static final String E002 = "不正な形式のデータを取得しました。";
 }

@@ -13,6 +13,7 @@ import org.junit.Test;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import jp.noifuji.antena.domain.usecase.AsyncResult;
 import jp.noifuji.antena.view.activity.MainActivity;
 
 /**

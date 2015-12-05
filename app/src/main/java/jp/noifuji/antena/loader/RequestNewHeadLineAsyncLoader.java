@@ -14,6 +14,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 
 import jp.noifuji.antena.constants.ErrorMessage;
+import jp.noifuji.antena.domain.usecase.AsyncResult;
 
 /**
  * Created by Ryoma on 2015/10/24.

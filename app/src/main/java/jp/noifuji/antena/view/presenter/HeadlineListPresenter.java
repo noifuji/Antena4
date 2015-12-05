@@ -1,21 +1,18 @@
 package jp.noifuji.antena.view.presenter;
 
-import android.util.Log;
-
 import java.util.Collections;
 import java.util.List;
 
-import jp.noifuji.antena.data.repository.HeadlineRepositoryImpl;
-import jp.noifuji.antena.domain.usecase.GetHeadlineListUseCase;
 import jp.noifuji.antena.data.entity.Headline;
 import jp.noifuji.antena.data.entity.HeadlineComparator;
-import jp.noifuji.antena.model.HeadLineListModel;
+import jp.noifuji.antena.data.repository.HeadlineRepositoryImpl;
+import jp.noifuji.antena.domain.usecase.GetHeadlineListUseCase;
 import jp.noifuji.antena.view.fragment.HeadLineListFragment;
 
 /**
  * Created by ryoma on 2015/11/19.
  */
-public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadLineListModelListener, GetHeadlineListUseCase.GetHeadlineListUseCaseListener {
+public class HeadlineListPresenter implements Presenter, GetHeadlineListUseCase.GetHeadlineListUseCaseListener {
 
     private static final String TAG = "HeadlineListPresenter";
     private static HeadlineListPresenter instance = new HeadlineListPresenter();
@@ -38,11 +35,6 @@ public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadL
 
     @Override
     public void destroy() {}
-
-    public void initialize(String category) {
-        if(mHeadlineListFragment != null) {
-        }
-    }
 
     public void setFragment(HeadLineListFragment fragment) {
         this.mHeadlineListFragment = fragment;
@@ -83,33 +75,17 @@ public class HeadlineListPresenter implements Presenter, HeadLineListModel.HeadL
     }
 
     @Override
-    public void onHeadLineListUpdateError(String errorMessage) {
-        this.hideViewLoading();
-        mHeadlineListFragment.showError(errorMessage);
-    }
-
-    @Override
-    public void onHeadLineListUpdated(List<Headline> headlineList, int updatedCount) {
-        this.hideViewLoading();
-        this.hideViewRefreshing();
-        mHeadlineListFragment.renderHeadlineList(headlineList);
-        if(headlineList.size() > 0) {
-            this.mHeadlineListFragment.setNewestHeadline(headlineList.get(0));
-        }
-    }
-
-    @Override
     public void onGetHeadlineListUseCaseError(String errorMessage) {
         this.hideViewLoading();
         mHeadlineListFragment.showError(errorMessage);
     }
 
     @Override
-    public void onGetHeadlineListUseCaseCompleted(List<Headline> headlineList, int updatedCount) {
+    public void onGetHeadlineListUseCaseCompleted(List<Headline> headlineList) {
         if(headlineList == null) {
             return;
         }
-        Log.d(TAG, "title is " + Collections.max(headlineList, new HeadlineComparator()).getmTitle());
+        //Log.d(TAG, "title is " + Collections.max(headlineList, new HeadlineComparator()).getmTitle());
 
         this.hideViewLoading();
         this.hideViewRefreshing();

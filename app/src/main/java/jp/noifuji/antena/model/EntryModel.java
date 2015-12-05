@@ -11,7 +11,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import jp.noifuji.antena.exception.AntenaSystemException;
-import jp.noifuji.antena.loader.AsyncResult;
+import jp.noifuji.antena.domain.usecase.AsyncResult;
 import jp.noifuji.antena.loader.RequestRawHtmlAsyncLoader;
 
 /**

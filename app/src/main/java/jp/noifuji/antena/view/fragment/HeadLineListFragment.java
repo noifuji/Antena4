@@ -71,7 +71,6 @@ public class HeadLineListFragment extends Fragment {
 
         mHeadlineListPresenter = HeadlineListPresenter.getInstance();
         mHeadlineListPresenter.setFragment(this);
-        mHeadlineListPresenter.initialize(mCategory);//@あわせるべきか
     }
 
     @Override

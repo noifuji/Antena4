@@ -11,17 +11,21 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.List;
 
+import jp.noifuji.antena.constants.ErrorMessage;
 import jp.noifuji.antena.data.entity.Headline;
-import jp.noifuji.antena.loader.AsyncResult;
 import jp.noifuji.antena.data.repository.HeadlineRepository;
 import jp.noifuji.antena.util.Utils;
 
 /**
- * Created by ryoma on 2015/11/20.
+ * ロジックを記述する。<br>
+ * Headlineのリストを取得する。<br>
+ * カテゴリの指定がある場合はこのクラスでフィルタする。<br>
+ * 既読の処理をここでする?
+ *
  */
 public class GetHeadlineListUseCase extends AsyncTaskLoader<AsyncResult<List<Headline>>> implements LoaderManager.LoaderCallbacks<AsyncResult<List<Headline>>> {
-    private static final int LOADER_ID = 1;
     private static final String TAG = "GetHeadlineListUseCase";
+    private static final int LOADER_ID = 1;
     private Loader mLoader;
     private HeadlineRepository mHeadlineRepository;
     private String mCategory;
@@ -43,10 +47,10 @@ public class GetHeadlineListUseCase extends AsyncTaskLoader<AsyncResult<List<Hea
             headlineList = mHeadlineRepository.headlines().headlineList(mContext, mCategory);
         } catch (IOException e) {
             e.printStackTrace();
-            result.setException(e, "");
+            result.setException(e, ErrorMessage.E001);
         } catch (JSONException e) {
             e.printStackTrace();
-            result.setException(e, "");
+            result.setException(e, ErrorMessage.E002);
         }
         result.setData(headlineList);
         return result;
@@ -67,7 +71,7 @@ public class GetHeadlineListUseCase extends AsyncTaskLoader<AsyncResult<List<Hea
             }
             return;
         }
-        mUseCaseListener.onGetHeadlineListUseCaseCompleted(Utils.filterHeadlineListByCategory(data.getData(), mCategory), 1);//@
+        mUseCaseListener.onGetHeadlineListUseCaseCompleted(Utils.filterHeadlineListByCategory(data.getData(), mCategory));
     }
 
     @Override
@@ -102,8 +106,8 @@ public class GetHeadlineListUseCase extends AsyncTaskLoader<AsyncResult<List<Hea
         /**
          * 記事のヘッドラインの更新確認が完了した場合に呼び出されます。
          * @param headlineList モデルが保持しているヘッドライン情報
-         * @param updatedCount 更新された件数
+         *
          */
-        void onGetHeadlineListUseCaseCompleted(List<Headline> headlineList, int updatedCount);
+        void onGetHeadlineListUseCaseCompleted(List<Headline> headlineList);
     }
 }

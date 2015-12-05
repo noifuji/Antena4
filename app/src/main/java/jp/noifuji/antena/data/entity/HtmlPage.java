@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class HtmlPage implements Serializable{
     private static long serialVersionUID = 4324324325L;
 
+    private String mUrl;
     private int mScrollX;
     private int mScrollY;
     private  String mHtml;
@@ -47,4 +48,11 @@ public class HtmlPage implements Serializable{
         this.mScrollX = mScrollX;
     }
 
+    public String getmUrl() {
+        return mUrl;
+    }
+
+    public void setmUrl(String mUrl) {
+        this.mUrl = mUrl;
+    }
 }
