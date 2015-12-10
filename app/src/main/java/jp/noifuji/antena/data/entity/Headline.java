@@ -1,5 +1,7 @@
 package jp.noifuji.antena.data.entity;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,6 +31,7 @@ public class Headline implements Serializable {
     private String mSiteTitle = "";
     private String mSummary = "";
     private String mThumbnailUrl = "";
+    private byte[] mThumbnail;
     private String mCategory = "";
     private boolean isRead = false;
     private boolean isNew = true;
@@ -152,5 +155,23 @@ public class Headline implements Serializable {
 
     public void setmCategory(String mCategory) {
         this.mCategory = mCategory;
+    }
+
+    public byte[] getmThumbnail() {
+        return mThumbnail;
+    }
+
+    public void setmThumbnail(byte[] mThumbnail) {
+        this.mThumbnail = mThumbnail;
+    }
+
+    public String getmThumbnailFileName() {
+        String filename;
+        Log.d("Headline", mThumbnailUrl);
+        String[] url = mThumbnailUrl.split("/");
+        filename = url[url.length-1];
+        Log.d("Headline", filename);
+        String[] temp = filename.split("\\.");
+        return temp[0];
     }
 }

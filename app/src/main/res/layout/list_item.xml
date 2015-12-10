@@ -1,70 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="5dp">
+    android:layout_height="100dp"
+    android:minHeight="100dp"
+    android:orientation="horizontal"
+    android:paddingBottom="0dp"
+    android:paddingTop="0dp">
+
+    <ImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:src="@drawable/default_thumbnail"
+        android:scaleType="fitCenter"
+        android:layout_gravity="center"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp">
-        <TextView
-            android:id="@+id/tag_new"
-            android:layout_width="35dp"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:gravity="center"
-            android:text="@string/tag_new"
-            android:visibility="gone"
-            android:background="@color/ripple"
-            />
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp">
 
-        <TextView
-            android:id="@+id/site_title"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingEnd="0dp"
-            android:paddingStart="5dp"
-            android:textSize="15sp"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:layout_weight="1"
-            android:text="VIPPER速報"
-            />
-
-        <TextView
-            android:id="@+id/publication_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:paddingRight="5dp"
             android:paddingLeft="5dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:id="@+id/tag_new"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:background="@color/ripple"
+                android:gravity="center"
+                android:text="@string/tag_new"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/site_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:paddingEnd="0dp"
+                android:paddingStart="5dp"
+                android:singleLine="true"
+                android:text="VIPPER速報"
+                android:textSize="12sp"
+                android:textColor="@color/secondary_text"/>
+
+            <TextView
+                android:id="@+id/publication_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingLeft="5dp"
+                android:paddingRight="16dp"
+                android:text="11/09 15:17"
+                android:textSize="12sp"
+                android:textColor="@color/secondary_text"/>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="0dp"
+            android:paddingRight="16dp"
+            android:text="【緊急】ことわざの一部を「バハムート」に置き換えても違和感が無いことわざって何かあるか?"
             android:textSize="14sp"
-            android:text="11/09 15:17"
-            />
-
-
+            android:textColor="@color/primary_text"/>
 
 
     </LinearLayout>
-
-
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:textStyle="bold"
-        android:textSize="17sp"
-        android:text="【緊急】ことわざの一部を「バハムート」に置き換えても違和感が無いことわざって何かあるか?"
-        />
-
-
-
 </LinearLayout>

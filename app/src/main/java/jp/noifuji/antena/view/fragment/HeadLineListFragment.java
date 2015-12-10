@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.github.rahatarmanahmed.cpv.CircularProgressView;
@@ -31,7 +32,7 @@ import jp.noifuji.antena.view.presenter.HeadlineListPresenter;
  * {@link OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class HeadLineListFragment extends Fragment {
+public class HeadLineListFragment extends Fragment implements EntryAdapter.OnHeadlineDisplayedListener {
     private static final String TAG = "HeadLineListFragment";
     private static final String CATEGORY = "category";
     private OnFragmentInteractionListener mListener;
@@ -47,6 +48,9 @@ public class HeadLineListFragment extends Fragment {
     FloatingActionButton mUpButton;
     @Bind(R.id.headline_list_progress)
     CircularProgressView mProgressBar;
+
+    ImageView imageView;//TODO 消す 実験用
+
 
     public HeadLineListFragment() {
         // Required empty public constructor
@@ -93,9 +97,12 @@ public class HeadLineListFragment extends Fragment {
         mUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListView.smoothScrollToPosition(0);
+                //mListView.smoothScrollToPosition(0);
+                ((EntryAdapter) mListView.getAdapter()).notifyDataSetChanged();
             }
         });
+
+
 
         this.loadHeadlineList();
 
@@ -124,7 +131,6 @@ public class HeadLineListFragment extends Fragment {
                 //parent.getAdapter().getView(position, view, parent);//@これはろじっくでは??
 
                 HeadLineListFragment.this.mHeadlineListPresenter.onHeadlineClicked(headline, position);
-
             }
         });
     }
@@ -167,6 +173,11 @@ public class HeadLineListFragment extends Fragment {
         this.mHeadlineListPresenter.destroy();
     }
 
+    @Override
+    public void onHeadlineDisplayed(Headline headline) {
+        mHeadlineListPresenter.getThumbnailImage(headline);
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -200,7 +211,7 @@ public class HeadLineListFragment extends Fragment {
         if(headlineList.size() == 0) {
             return;
         }
-        EntryAdapter adapter = new EntryAdapter(this.getActivity(), R.layout.list_item, headlineList);
+        EntryAdapter adapter = new EntryAdapter(this.getActivity().getApplication(), R.layout.list_item, headlineList, this);
         mListView.setAdapter(adapter);
     }
 
@@ -226,10 +237,24 @@ public class HeadLineListFragment extends Fragment {
         this.mHeadlineListPresenter.refreshHeadlineList(mCategory);
     }
 
+    /**
+     * 記事を既読状態にする
+     * @param position
+     */
     public void readHeadline(int position) {//@
         Headline headline = (Headline) mListView.getAdapter().getItem(position);
         headline.setIsRead(true);
         mListView.getAdapter().getView(position, null, null);
+    }
+
+    /**
+     * サムネイル画像の遅延ロードが完了したら呼ばれる。
+     * @param updatedHeadline
+     */
+    public void onReceivedThumbnail(Headline updatedHeadline) {
+        Log.d(TAG, updatedHeadline.getmTitle());
+        ((EntryAdapter)mListView.getAdapter()).setItem(updatedHeadline);
+        ((EntryAdapter)mListView.getAdapter()).notifyDataSetChanged();
     }
 
 }

@@ -2,39 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\StudioProjects\Antena4\app\libs\dexmaker-mockito-1.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="dd2b6c014265dbec06f8059088d917a6be21826c">
-        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\dexmaker-mockito-1.0-487b2ff38b62a84a9c4c8a92e69d4afe47c07d10.jar" />
-    </item>
-    <item
-        jar="C:\Users\ryoma\.gradle\caches\modules-2\files-2.1\com.google.dagger\dagger\2.0\da7ba0ee1d30edd955da276cdf01d3d7cb24aedc\dagger-2.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="da7ba0ee1d30edd955da276cdf01d3d7cb24aedc">
-        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\dagger-2.0-e74945fc2856989a50861f90169545246ad0c67d.jar" />
-    </item>
-    <item
-        jar="C:\StudioProjects\Antena4\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-247169fa6367e55b7d3d0dd170a0e82aa622f645.jar" />
-    </item>
-    <item
         jar="C:\StudioProjects\Antena4\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
         <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\classes-6d55a71d728ecfe1ae5d892866164d2fbb3ca3d4.jar" />
-    </item>
-    <item
-        jar="C:\StudioProjects\Antena4\app\libs\jsoup-1.8.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3a86e137575e4a45f5a9eec407f8135512e823a2">
-        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\jsoup-1.8.3-7ebb044a7a3d6f5cab250a8122eed0616a7cba66.jar" />
     </item>
     <item
         jar="C:\StudioProjects\Antena4\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
@@ -44,32 +16,11 @@
         <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\classes-802caa0f6f57b3abac10e0318d4a8a87aecf8975.jar" />
     </item>
     <item
-        jar="C:\StudioProjects\Antena4\app\build\intermediates\exploded-aar\com.github.rahatarmanahmed\circularprogressview\2.4.0\jars\classes.jar"
+        jar="C:\StudioProjects\Antena4\app\libs\dexmaker-mockito-1.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="9a883402815cf6ab7b526e84bbd1d8752f075cd3">
-        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\classes-c7945fd0196e03daddbc177e0bb02f962263b2d7.jar" />
-    </item>
-    <item
-        jar="C:\StudioProjects\Antena4\app\libs\mockito-all-1.10.19.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="539df70269cc254a58cccc5d8e43286b4a73bf30">
-        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\mockito-all-1.10.19-6383d1859e1570ccfa12de45189e3715833f3845.jar" />
-    </item>
-    <item
-        jar="C:\Users\ryoma\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
-        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.0-2675f6d24e648dd3988cdb595ef576fe77635e06.jar" />
-    </item>
-    <item
-        jar="C:\StudioProjects\Antena4\app\libs\butterknife-7.0.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1-82534050f60419af294adaf451c2cd6320f6b49c.jar" />
+        sha1="dd2b6c014265dbec06f8059088d917a6be21826c">
+        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\dexmaker-mockito-1.0-487b2ff38b62a84a9c4c8a92e69d4afe47c07d10.jar" />
     </item>
     <item
         jar="C:\StudioProjects\Antena4\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
@@ -79,11 +30,18 @@
         <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\classes-fe160c89364a7a17fa8eb083bd130407a0f96f6d.jar" />
     </item>
     <item
-        jar="C:\StudioProjects\Antena4\app\build\intermediates\exploded-aar\com.github.castorflex.smoothprogressbar\library-circular\1.2.0\jars\classes.jar"
+        jar="C:\StudioProjects\Antena4\app\libs\mockito-all-1.10.19.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="e6e5cb683c74a95072d8fbf47a997e64546fc284">
-        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\classes-0e1c9e489d4363e5ed26232966ee4891c98190a8.jar" />
+        sha1="539df70269cc254a58cccc5d8e43286b4a73bf30">
+        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\mockito-all-1.10.19-6383d1859e1570ccfa12de45189e3715833f3845.jar" />
+    </item>
+    <item
+        jar="C:\StudioProjects\Antena4\app\libs\butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1-82534050f60419af294adaf451c2cd6320f6b49c.jar" />
     </item>
     <item
         jar="C:\StudioProjects\Antena4\app\libs\dexmaker-1.0.jar"
@@ -93,11 +51,67 @@
         <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\dexmaker-1.0-fd5323b8ece158055b090b9455099dd969882411.jar" />
     </item>
     <item
+        jar="C:\StudioProjects\Antena4\app\build\intermediates\exploded-aar\com.github.rahatarmanahmed\circularprogressview\2.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9a883402815cf6ab7b526e84bbd1d8752f075cd3">
+        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\classes-c7945fd0196e03daddbc177e0bb02f962263b2d7.jar" />
+    </item>
+    <item
         jar="C:\Users\ryoma\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="6975da39a7040257bd51d21a231b76c915872d38">
         <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\javax.inject-1-8411a77cb705cec9871259daf8bbc4d7f04ca2fd.jar" />
+    </item>
+    <item
+        jar="C:\StudioProjects\Antena4\app\build\intermediates\exploded-aar\com.github.castorflex.smoothprogressbar\library-circular\1.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e6e5cb683c74a95072d8fbf47a997e64546fc284">
+        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\classes-0e1c9e489d4363e5ed26232966ee4891c98190a8.jar" />
+    </item>
+    <item
+        jar="C:\Users\ryoma\.gradle\caches\modules-2\files-2.1\com.j256.ormlite\ormlite-core\4.48\e579bd2905d0399af5029aaaf9817d5fa0ca88a5\ormlite-core-4.48.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e579bd2905d0399af5029aaaf9817d5fa0ca88a5">
+        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\ormlite-core-4.48-41d127f08186547ef96d39294f5d35aca33e0484.jar" />
+    </item>
+    <item
+        jar="C:\StudioProjects\Antena4\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-247169fa6367e55b7d3d0dd170a0e82aa622f645.jar" />
+    </item>
+    <item
+        jar="C:\Users\ryoma\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.0.0\support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\support-annotations-23.0.0-2675f6d24e648dd3988cdb595ef576fe77635e06.jar" />
+    </item>
+    <item
+        jar="C:\Users\ryoma\.gradle\caches\modules-2\files-2.1\com.j256.ormlite\ormlite-android\4.48\afa06f539a4026c10b247386312aa67404b80a16\ormlite-android-4.48.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="afa06f539a4026c10b247386312aa67404b80a16">
+        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\ormlite-android-4.48-4cf8bbf2fa240dac37049405b7f831935a259a58.jar" />
+    </item>
+    <item
+        jar="C:\Users\ryoma\.gradle\caches\modules-2\files-2.1\com.google.dagger\dagger\2.0\da7ba0ee1d30edd955da276cdf01d3d7cb24aedc\dagger-2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="da7ba0ee1d30edd955da276cdf01d3d7cb24aedc">
+        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\dagger-2.0-e74945fc2856989a50861f90169545246ad0c67d.jar" />
+    </item>
+    <item
+        jar="C:\StudioProjects\Antena4\app\libs\jsoup-1.8.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3a86e137575e4a45f5a9eec407f8135512e823a2">
+        <dex dex="C:\StudioProjects\Antena4\app\build\intermediates\pre-dexed\debug\jsoup-1.8.3-7ebb044a7a3d6f5cab250a8122eed0616a7cba66.jar" />
     </item>
 
 </items>

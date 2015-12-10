@@ -13,5 +13,7 @@ import jp.noifuji.antena.data.entity.Headline;
  * Created by ryoma on 2015/11/20.
  */
 public interface DataStore {
+    //TODO Repositoryの下にはMemoryCache DiskCache Cloud...にする。
     public List<Headline> headlineList(Context context, String category) throws IOException, JSONException;
+    public Headline thumbnail(Context context, Headline headline) throws IOException, JSONException;
 }

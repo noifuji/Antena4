@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +18,6 @@ import butterknife.ButterKnife;
 import jp.noifuji.antena.R;
 import jp.noifuji.antena.data.entity.HtmlHistory;
 import jp.noifuji.antena.data.entity.HtmlPage;
-import jp.noifuji.antena.model.EntryModel;
 import jp.noifuji.antena.util.Utils;
 import jp.noifuji.antena.view.presenter.WebViewPresenter;
 
@@ -31,7 +30,6 @@ import jp.noifuji.antena.view.presenter.WebViewPresenter;
 public class WebViewFragment extends Fragment {
     private static final String TAG = "WebViewFragment";
     private OnFragmentInteractionListener mListener;
-    private EntryModel mEntryModel;
     private HtmlHistory mHtmlPageStack;
     private boolean isGoBack = false;
     private HtmlPage mCurrentHtmlPage;
@@ -42,6 +40,8 @@ public class WebViewFragment extends Fragment {
     WebView webView;
     @Bind(R.id.progress_view)
     View mProgressBar;
+    @Bind(R.id.back_button)
+    FloatingActionButton mBackButton;
 
     public WebViewFragment() {
         // Required empty public constructor
@@ -77,6 +77,9 @@ public class WebViewFragment extends Fragment {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                if (mHtmlPageStack == null) {
+                    return;
+                }
                 WebViewFragment.this.mProgressBar.setVisibility(View.GONE);
                 if (isGoBack) {
                     //バックキーが押されている場合、ヒストリーからポップする。
@@ -114,6 +117,14 @@ public class WebViewFragment extends Fragment {
             }
         });
 
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mHtmlPageStack = null;
+                mListener.onFinishActivity();
+            }
+        });
+
         mProgressBar.setVisibility(View.VISIBLE);
         Intent intent = this.getActivity().getIntent();
         //フラグメントが再生成された場合には、前回表示していたHTMLが残っているため、それを表示する。
@@ -143,7 +154,6 @@ public class WebViewFragment extends Fragment {
         Log.d(TAG, "onDetach()");
         //Activityに渡していたWevViewへの参照を消しておく。
         mListener = null;
-        //mEntryModel.removeListener(this);
         super.onDetach();
     }
 
@@ -185,10 +195,8 @@ public class WebViewFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
-
         void onShowTextMessage(String message);
+        void onFinishActivity();
     }
 
 }

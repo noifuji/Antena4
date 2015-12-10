@@ -1,7 +1,6 @@
 package jp.noifuji.antena.view.activity;
 
 import android.app.FragmentTransaction;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,13 +33,13 @@ public class WebViewActivity extends AppCompatActivity implements WebViewFragmen
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    public void onShowTextMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onShowTextMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    public void onFinishActivity() {
+        this.finish();
     }
 
     @Override
