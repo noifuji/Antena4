@@ -110,7 +110,7 @@ public class HeadlineDataStore implements DataStore {
 
         //キャッシュにつっこむ
         //TODO たぶん死ぬほど遅いからなおす キャッシュへのかきこみは別スレッドでやればどうか?
-        headlinesCache = (ArrayList<Headline>) cache.get();
+        /*headlinesCache = (ArrayList<Headline>) cache.get();//TODO ディスクキャッシュへのアクセスはsynchronizedでないとやばいよ
         if (headlinesCache.size() > 0) {
             for (Headline h : headlinesCache) {
                 if (h.getmSysId().equals(headline.getmSysId())) {
@@ -118,7 +118,7 @@ public class HeadlineDataStore implements DataStore {
                 }
             }
             cache.put(headlinesCache);
-        }
+        }*/
 
         return headline;
     }
